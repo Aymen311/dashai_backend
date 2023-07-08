@@ -6,12 +6,14 @@ import pinecone
 from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain import OpenAI, LLMChain, PromptTemplate
+from flask_cors import CORS
+
 import traceback
 
 from langchain.memory import VectorStoreRetrieverMemory
 
 app = Flask(__name__)
-
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 PINECONE_API_KEY = "82ee78c5-332d-45f1-9665-06e87130f59a"
 PINECONE_ENV = "asia-southeast1-gcp-free"
 OPENAI_API_KEY = "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"
