@@ -1,3 +1,4 @@
+flask
 pinecone-client
 langchain
 openai
