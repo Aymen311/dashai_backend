@@ -59,7 +59,7 @@ def upload():
 @app.route('/predict', methods=['POST'])
 def predict():
     human_input = request.json['human_input']
-
+    print(human_input)
     template = """
         You are an E-commerce AI assistant named Robby. The user gives you access to data about his client reviews, your job is to discuss with the client about the different insights he could get from those reviews,
         content is represented by the following pieces of context, use them to answer the question at the end.
