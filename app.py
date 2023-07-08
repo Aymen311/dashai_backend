@@ -6,12 +6,14 @@ import pinecone
 from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain import OpenAI, LLMChain, PromptTemplate
+from flask_cors import CORS
+
 import traceback
 
 from langchain.memory import VectorStoreRetrieverMemory
 
 app = Flask(__name__)
-
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 PINECONE_API_KEY = "82ee78c5-332d-45f1-9665-06e87130f59a"
 PINECONE_ENV = "asia-southeast1-gcp-free"
 OPENAI_API_KEY = "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"
@@ -45,7 +47,8 @@ def load_csv_and_embed(file_path):
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    file = request.files['file']
+    file = request.files.get('file', '')
+    print(file)
     if file:
         file_path = 'files/file.csv'  # Provide the appropriate path to save the file
         file.save(file_path)
@@ -59,7 +62,7 @@ def upload():
 @app.route('/predict', methods=['POST'])
 def predict():
     human_input = request.json['human_input']
-
+    print(human_input)
     template = """
         You are an E-commerce AI assistant named Robby. The user gives you access to data about his client reviews, your job is to discuss with the client about the different insights he could get from those reviews,
         content is represented by the following pieces of context, use them to answer the question at the end.
