@@ -57,6 +57,7 @@ def upload():
 
         return jsonify({'message': 'CSV file uploaded and processed successfully.'})
     else:
+        file_path = 'files/file.csv'
         return jsonify({'message': 'No file was uploaded.'})
 
 @app.route('/predict', methods=['POST'])
