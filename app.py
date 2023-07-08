@@ -48,6 +48,7 @@ def load_csv_and_embed(file_path):
 @app.route('/upload', methods=['POST'])
 def upload():
     file = request.files.get('file', '')
+    print(file)
     if file:
         file_path = 'files/file.csv'  # Provide the appropriate path to save the file
         file.save(file_path)
