@@ -20,6 +20,7 @@ OPENAI_API_KEY = "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"
 os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
 
 doc_db = None
+file_path = 'files/file.csv'
 
 def load_csv_and_embed(file_path):
     global doc_db
@@ -44,6 +45,8 @@ def load_csv_and_embed(file_path):
         embeddings, 
         index_name='reviews-idx'
     )
+    
+load_csv_and_embed(file_path)
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -57,8 +60,7 @@ def upload():
 
         return jsonify({'message': 'CSV file uploaded and processed successfully.'})
     else:
-        file_path = 'files/file.csv'
-        load_csv_and_embed(file_path)
+
 
         return jsonify({'message': 'No file was uploaded.'})
 
