@@ -14,9 +14,9 @@ from langchain.memory import VectorStoreRetrieverMemory
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
-PINECONE_API_KEY = "82ee78c5-332d-45f1-9665-06e87130f59a"
-PINECONE_ENV = "asia-southeast1-gcp-free"
-OPENAI_API_KEY = "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"
+PINECONE_API_KEY = "YOUR API KEY"
+PINECONE_ENV = "YOUR PINECONE_ENV"
+OPENAI_API_KEY = "YOUR API KEY"
 os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
 
 doc_db = None
